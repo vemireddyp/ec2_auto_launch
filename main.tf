@@ -15,7 +15,7 @@ resource "aws_vpc" "vpc-test" {
   }
 }
 #Create Subnets
-resource "aws_subnet" "subnet 1" {
+/*resource "aws_subnet" "subnet 1" {
   vpc_id = "${aws_vpc.vpc-test.id}"
   cidr_block = "10.25.16.0/23"
  tags {
@@ -76,5 +76,5 @@ resource "aws_network_acl" "nacl" {
   tags = {
     Name = "NetworkACL-test"
   }
-}
+}*/
 
