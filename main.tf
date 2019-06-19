@@ -29,14 +29,14 @@ resource "aws_subnet" "subnet 2" {
    Name = "DMZ2-test"
 }
 }
-resource "aws_subnet" "subnet 3"
+resource "aws_subnet" "subnet 3" {
   vpc_id = "${aws_vpc.vpc-test.id}"
   cidr_block = "10.25.20.0/23"
  tags {
    Name = "Inside1-test"
 }
 }
-resource "aws_subnet" "subnet 4"
+resource "aws_subnet" "subnet 4" {
   vpc_id = "${aws_vpc.vpc-test.id}"
   cidr_block = "10.25.22.0/23"
  tags {
