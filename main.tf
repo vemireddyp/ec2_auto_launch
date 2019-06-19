@@ -1,3 +1,11 @@
+
+provider "aws" {
+  access_key = "AKIA6GN5GZ7SY3MANGB6"
+  secret_key = "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"
+  region = "eu-west-3"
+  profile = "975891255269"
+
+}
 # Create VPC
 resource "aws_vpc" "vpc-test" {
   cidr_block = "10.25.16.0/21"
