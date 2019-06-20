@@ -1,6 +1,6 @@
 # AWS credentials
-AWS_ACCESS_KEY = ""
-AWS_SECRET_KEY = ""
+#AWS_ACCESS_KEY = ""
+#AWS_SECRET_KEY = ""
 AWS_REGION = "eu-west-3"
 KEY_PAIR = "EUW03S-260419"
 INSTANCE_PASSWORD = "Password1234"
