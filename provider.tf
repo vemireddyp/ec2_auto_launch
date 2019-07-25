@@ -55,13 +55,17 @@ resource "aws_instance" "server" {
     sc.exe config winrm start=auto
     net start winrm
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Install-WindowsFeature -Name Web-Mgmt-Sevice -IncludeAllSubFeature
+    Install-WindowsFeature -Name Web-Http-Redirect
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
     $password = "P@ssw0rd1234" | ConvertTo-SecureString -asPlainText -Force
     $username = "suppv"
+    $uname = "Administrator"
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
+    $cred = New-Object System.Management.Automation.PSCredential($uname,$password)
     $hostname = "IIS001"
-    Rename-Computer -NewName "IIS001" -Credential $credential
+    Rename-Computer -NewName "IIS001" -Credential $cred
     Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
    ## $domainpassword = ConvertTo-SecureString "Vinayaka"123" -AsPlainText -Force 
 #$secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
