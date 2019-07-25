@@ -10,7 +10,7 @@ ingress {
 from_port = 0
 to_port = 6556
 protocol = "tcp"
-cidr_blocks = ["0.0.0.0/0"]
+cidr_blocks = ["94.125.134.81/32"]
 }
 vpc_id = "vpc-05a81be78057299ff" 
 tags {
