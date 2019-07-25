@@ -1,5 +1,5 @@
-resource "aws_security_group" "all" {
-name="all"
+resource "aws_security_group" "SG-IIS" {
+name="SG-IIS"
 egress {
 from_port = 0
 to_port = 0
