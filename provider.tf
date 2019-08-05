@@ -78,7 +78,7 @@ resource "aws_instance" "server" {
     delete_on_termination = "true"
       }
     
-    tags {
+    tags = {
         Name = "new-iisserver"
       }
    connection {
