@@ -21,10 +21,17 @@ pipeline {
         stage('initialize') {
           steps {
             //sh "terraform init"
-             bat 'terraform init'		  
+               withAWS(credentials: 'AWS-Keys') {
+           // sh "terraform init"
+                 bat "terraform init"
+                 bat "terraform plan"
+                 bat "terraform apply -auto-approve" 		  
           } 
         }
-        stage('plan') {
+	}
+    }
+
+       /* stage('plan') {
           steps {
              bat 'terraform plan'
            // sh "terraform plan"
@@ -37,7 +44,7 @@ pipeline {
           }
          } 
 	 
-}
+}*/
 }
   
 
