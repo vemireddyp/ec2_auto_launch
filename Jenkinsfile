@@ -20,19 +20,20 @@ pipeline {
     
         stage('initialize') {
           steps {
-            sh "terraform init"		  
+            //sh "terraform init"
+             bat 'terraform init'		  
           } 
         }
         stage('plan') {
           steps {
-           
-            sh "terraform plan"
+             bat 'terraform plan'
+           // sh "terraform plan"
           }
 		}  
         stage('apply') {
           steps {
-           
-            sh "terraform apply -auto-approve"
+              bat 'terraform apply -auto-approve'
+          //  sh "terraform apply -auto-approve"
           }
          } 
 	 
