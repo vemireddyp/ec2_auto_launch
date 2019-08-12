@@ -58,7 +58,7 @@ resource "aws_instance" "server" {
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
-    $password = "P@ssw0rd1234" | ConvertTo-SecureString -asPlainText -Force
+    $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
     $username = "suppv"
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
     $hostname = "IIS001"
