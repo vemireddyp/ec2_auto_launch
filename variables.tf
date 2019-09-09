@@ -35,7 +35,7 @@ variable "aws_profile" {
 
 variable "region" {
   description = "AWS region"
-  default     = "eu-west-3"
+  default     = "eu-west-1"
 }
 
 
