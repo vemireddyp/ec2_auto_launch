@@ -24,7 +24,7 @@ to_port = 6556
 protocol = "tcp"
 cidr_blocks = ["10.25.16.0/21"]
 }  
-vpc_id = "vpc-05a81be78057299ff" 
+vpc_id = "vpc-62026006" 
 tags = {
 Name = "rdp"
 }
