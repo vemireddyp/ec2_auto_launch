@@ -21,11 +21,11 @@ pipeline {
         stage('initialize') {
           steps {
             //sh "terraform init"
-               withAWS(credentials: 'AWS-Keys') {
+               withAWS(credentials: 'AWS-staging') {
            // sh "terraform init"
                  bat "terraform init"
-                 bat "terraform plan"
-                 bat "terraform apply -auto-approve" 		  
+             //    bat "terraform plan"
+             //    bat "terraform apply -auto-approve" 		  
           } 
         }
 	}
