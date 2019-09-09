@@ -1,8 +1,9 @@
 # AWS credentials
 #AWS_ACCESS_KEY = ""
 #AWS_SECRET_KEY = ""
-AWS_REGION = "eu-west-3"
-KEY_PAIR = "EUW03S-260419"
+AWS_REGION = "eu-west-1"
+KEY_PAIR = "AWS-Key-290216-EUW" 
+#KEY_PAIR = "EUW03S-260419"
 INSTANCE_PASSWORD = "Password1234"
 
 # Availability zones
@@ -10,8 +11,8 @@ INSTANCE_PASSWORD = "Password1234"
 #az2 = "ap-southeast-1b"
 
 # VPC
-VPC_ID = "vpc-05a81be78057299ff"
-
+#VPC_ID = "vpc-05a81be78057299ff"
+VPC_ID = "vpc-62026006"
 subnet_cidr_inside1 = "10.25.20.0/23"
 subnet_cidr_inside2 = "10.25.22.0/23"
 
