@@ -30,7 +30,7 @@ provider "aws" {
  #   Name = "${var.name_tag}*"
 #  }
 #}
-data 
+ 
 
 resource "aws_instance" "server" {
     ami           = "${data.aws_ami.windows.id}"
