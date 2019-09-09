@@ -30,12 +30,12 @@ provider "aws" {
  #   Name = "${var.name_tag}*"
 #  }
 #}
-
+data 
 
 resource "aws_instance" "server" {
     ami           = "${data.aws_ami.windows.id}"
     instance_type = "t2.medium"
-    private_ip = "10.25.16.6"
+  #  private_ip = "10.25.16.6"
     key_name = "${var.KEY_PAIR}"
     subnet_id = "subnet-05a67d3cbee1bbc99"
     associate_public_ip_address  = "true"
@@ -80,7 +80,7 @@ resource "aws_instance" "server" {
       }
     
     tags = {
-        Name = "new-iisserver"
+        Name = "test-iis-server"
       }
    connection {
          type     = "winrm"
