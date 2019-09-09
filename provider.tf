@@ -37,7 +37,7 @@ resource "aws_instance" "server" {
     instance_type = "t2.medium"
   #  private_ip = "10.25.16.6"
     key_name = "${var.KEY_PAIR}"
-    subnet_id = "subnet-05a67d3cbee1bbc99"
+    subnet_id = "subnet-60ed6d38"
     associate_public_ip_address  = "true"
     vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}"]
     #id = "${data.aws_vpc.selected.id}"
