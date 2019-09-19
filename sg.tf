@@ -1,5 +1,5 @@
 resource "aws_security_group" "SG-IIS" {
-name="SG-IIS"
+name="SG-IIS-test"
 egress {
 from_port = 0
 to_port = 0
