@@ -91,9 +91,16 @@ resource "aws_instance" "server" {
         # password = "${var.domain_password}"
         # password = "${var.admin_password}"
      }
+ provisioner "file" {
+    source      = "IISConfigureremote.ps1"
+    destination = "C:\\IISConfigureremote.ps1"
+  }
  provisioner "remote-exec" {
-       
-  script = "IISConfigureremote.ps1"
+   inline = [
+    "cd c:\\",
+    powershell.exe ./IISConfigureremote.ps1",
+  ]       
+ 
    
   # "cd C:\\",
    # "powershell.exe ./IISConfigureremote.ps1",
