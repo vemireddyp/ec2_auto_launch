@@ -98,7 +98,7 @@ resource "aws_instance" "server" {
  provisioner "remote-exec" {
    inline = [
     "cd c:\\",
-    powershell.exe ./IISConfigureremote.ps1",
+    "powershell.exe ./IISConfigureremote.ps1",
   ]       
 }
    
