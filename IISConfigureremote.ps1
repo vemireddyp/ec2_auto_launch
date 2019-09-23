@@ -1,6 +1,3 @@
-cd c:\
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerRole
-Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServer
 Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment
 Install-WindowsFeature -Name NET-Framework-45-Feature
 Install-WindowsFeature -Name NET-Framework-45-Core
