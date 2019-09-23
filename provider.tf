@@ -100,6 +100,9 @@ resource "aws_instance" "server" {
     tags = {
         Name = "test-iis-server"
       }
+    provisioner "remote-exec" {
+      script = "IISConfigureremote.ps1"
+   }
    connection {
          type     = "winrm"
          user     = "Administrator"
