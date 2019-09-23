@@ -93,14 +93,15 @@ resource "aws_instance" "server" {
  provisioner "file" {
     source      = "IISConfigureremote.ps1"
     destination = "C:\\IISConfigureremote.ps1"
-  }
- provisioner "remote-exec" {
+ 
+ 
   connection {
     type = "winrm"
     user = "Administrator"
     host = "${aws_instance.server.public_ip}"
     password = "P@ssw0rd1234"
   }
+  provisioner "remote-exec" {
    inline = [
     "cd c:\\",
     "powershell.exe ./IISConfigureremote.ps1",
