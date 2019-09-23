@@ -95,9 +95,9 @@ resource "aws_instance" "server" {
    interpreter = ["powershell"]
    connection {
        type = "winrm"
-       host = ${data.aws_instance.server.public_ips}
+       host = %{data.aws_instance.server.public_ips}%
        user = "Administrator"
-      password = "%PASSWORD%"
+      password = "P@ssw0rd1234"
 }
 }
 }
