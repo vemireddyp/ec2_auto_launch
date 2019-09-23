@@ -86,6 +86,7 @@ resource "aws_instance" "server" {
    connection {
          type     = "winrm"
          user     = "Administrator"
+         host = "${aws_instance.server.public_ip}"
          password = "P@ssword1234"
         # password = "${var.domain_password}"
         # password = "${var.admin_password}"
