@@ -82,9 +82,7 @@ resource "aws_instance" "server" {
     tags = {
         Name = "test-iis-server"
       }
-   
    connection {
-         host = "${aws_instance.server.public_ip}"
          type     = "winrm"
          user     = "Administrator"
         # password = "P@ssword1234"
