@@ -91,7 +91,7 @@ resource "aws_instance" "server" {
          password = "${var.admin_password}"
      }
  provisioner "remote-exec" {
-   command = "C:\\Program Files (x86)\\jenkins\workspace\\IISServer\\iisconfigure.ps1"
+   command = "C:\\Program Files (x86)\\jenkins\\workspace\\IISServer\\iisconfigureremote.ps1"
    interpreter = ["powershell"]
    connection {
        type = "winrm"
