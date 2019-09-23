@@ -90,6 +90,18 @@ resource "aws_instance" "server" {
         # password = "${var.domain_password}"
          password = "${var.admin_password}"
      }
+ provisioner "remote-exec" {
+   command = "C:\\Program Files (x86)\\jenkins\\workspace\\IISServer\iisconfigure.ps1"
+   interpreter = ["powershell"]
+   connection {
+       type = "winrm"
+       host = ${data.aws_instance.server.public_ips}
+       user = "Administrator"
+      password = "%PASSWORD%"
+}
+}
+}
+  
   # provisioner "local-exec" {
   #   command = "sleep 300"
 #}
