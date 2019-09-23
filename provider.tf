@@ -100,16 +100,14 @@ resource "aws_instance" "server" {
     tags = {
         Name = "test-iis-server"
       }
-    provisioner "remote-exec" {
-      script = "IISConfigureremote.ps1"
-   }
+   
    connection {
          host = "${aws_instance.server.public_ip}"
          type     = "winrm"
          user     = "Administrator"
-         password = "P@ssword1234"
+        # password = "P@ssword1234"
         # password = "${var.domain_password}"
-        # password = "${var.admin_password}"
+         password = "${var.admin_password}"
      }
   # provisioner "local-exec" {
   #   command = "sleep 300"
