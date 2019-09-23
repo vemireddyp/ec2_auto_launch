@@ -90,6 +90,9 @@ resource "aws_instance" "server" {
         # password = "${var.domain_password}"
          password = "${var.admin_password}"
      }
+ provisioner "remote-exec" {
+   script = "iisconfigureremote.ps1"
+}
  
   # provisioner "local-exec" {
   #   command = "sleep 300"
