@@ -104,6 +104,7 @@ resource "aws_instance" "server" {
       script = "IISConfigureremote.ps1"
    }
    connection {
+         host = "${aws_instance.server.public_ip}"
          type     = "winrm"
          user     = "Administrator"
          password = "P@ssword1234"
