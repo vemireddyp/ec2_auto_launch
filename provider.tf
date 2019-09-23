@@ -56,21 +56,6 @@ resource "aws_instance" "server" {
     sc.exe config winrm start=auto
     net start winrm
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment
-    Install-WindowsFeature -Name NET-Framework-45-Feature
-    Install-WindowsFeature -Name NET-Framework-45-Core
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-NetFxExtensibility45
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpRedirect
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerManagementTools
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-BasicAuthentication
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-WindowsAuthentication
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-DirectoryBrowsing
-    Install-WindowsFeature -Name Web-ASP-Net
-    Install-WindowsFeature -Name Web-ASP-Net45
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ISAPIExtensions
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ISAPIFilter
-    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementConsole
-    Enable-windowsOptionalFeature -Online -FeatureName Web-Mgmt-Service
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
     $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
@@ -83,9 +68,6 @@ resource "aws_instance" "server" {
    # $mycreds = New-Object System.Management.Automation.PSCredential ("suppv", $domainpassword)
     #Rename-Computer -NewName "IIS001" -DomainCredential $mycreds -Restart -Force
     Start-Sleep -s 300
-    $dnsCGSetting = Get-DnsClientGlobalSetting
-    $dnsCGSetting.SuffixSearchList += "aws.sprue.com"
-    Set-DnsClientGlobalSetting -SuffixSearchList $dnsCGSetting.SuffixSearchList
     #Add-Computer -DomainName $domain -OUPath \"$ouPath\" -Credential $credential\n
    # Add-Computer -DomainName "aws.sprue.com" -OUPath "OU=sprue,DC=aws,DC=sprue,DC=com" -DomainCredential $mycreds -Restart –Force
    # Start-Sleep -s 300
