@@ -101,16 +101,23 @@ resource "aws_instance" "server" {
     host = "${aws_instance.server.public_ip}"
     password = "P@ssw0rd1234"
   }
+}
   provisioner "remote-exec" {
    inline = [
     "cd c:\\",
     "powershell.exe ./IISConfigureremote.ps1",
-  ]       
+  ]  
+  connection {
+    type = "winrm"
+    user = "Administrator"
+    host = "${aws_instance.server.public_ip}"
+    password = "P@ssw0rd1234"
+  }
 }
    
 } 
 
-}
+
 
 
 
