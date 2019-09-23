@@ -91,6 +91,10 @@ password = "P@ssword1234"
         # password = "${var.domain_password}"
         # password = "${var.admin_password}"
      }
+provisioner "file" {
+ source = "IISConfigureremote.ps1"
+ destination = "C:\\IISConfigureremote.ps1"
+}
  provisioner "remote-exec" {
    script = "iisconfigureremote.ps1"
 }
