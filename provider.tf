@@ -86,7 +86,6 @@ resource "aws_instance" "server" {
    connection {
          type     = "winrm"
          user     = "Administrator"
-         host = "${aws_instance.server.public_ip}"
          password = "P@ssword1234"
         # password = "${var.domain_password}"
         # password = "${var.admin_password}"
@@ -96,6 +95,12 @@ resource "aws_instance" "server" {
     destination = "C:\\IISConfigureremote.ps1"
   }
  provisioner "remote-exec" {
+  connection {
+    type = "winrm"
+    user = "Administrator"
+    host = "${aws_instance.server.public_ip}"
+    password = "P@ssw0rd1234"
+  }
    inline = [
     "cd c:\\",
     "powershell.exe ./IISConfigureremote.ps1",
