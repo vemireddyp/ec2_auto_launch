@@ -56,19 +56,36 @@ resource "aws_instance" "server" {
     sc.exe config winrm start=auto
     net start winrm
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment
+    Install-WindowsFeature -Name NET-Framework-45-Feature
+    Install-WindowsFeature -Name NET-Framework-45-Core
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-NetFxExtensibility45
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-HttpRedirect
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-WebServerManagementTools
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-BasicAuthentication
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-WindowsAuthentication
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-DirectoryBrowsing
+    Install-WindowsFeature -Name Web-ASP-Net
+    Install-WindowsFeature -Name Web-ASP-Net45
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ISAPIExtensions
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ISAPIFilter
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ManagementConsole
+    Enable-windowsOptionalFeature -Online -FeatureName Web-Mgmt-Service
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
     $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
     $username = "suppv"
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
-    $hostname = "IIS-STG-TEST"
+    $hostname = "IIS001"
     Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
    ## $domainpassword = ConvertTo-SecureString "Vinayaka"123" -AsPlainText -Force 
 #$secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
    # $mycreds = New-Object System.Management.Automation.PSCredential ("suppv", $domainpassword)
     #Rename-Computer -NewName "IIS001" -DomainCredential $mycreds -Restart -Force
     Start-Sleep -s 300
-    
+    $dnsCGSetting = Get-DnsClientGlobalSetting
+    $dnsCGSetting.SuffixSearchList += "aws.sprue.com"
+    Set-DnsClientGlobalSetting -SuffixSearchList $dnsCGSetting.SuffixSearchList
     #Add-Computer -DomainName $domain -OUPath \"$ouPath\" -Credential $credential\n
    # Add-Computer -DomainName "aws.sprue.com" -OUPath "OU=sprue,DC=aws,DC=sprue,DC=com" -DomainCredential $mycreds -Restart –Force
    # Start-Sleep -s 300
@@ -86,47 +103,26 @@ resource "aws_instance" "server" {
    connection {
          type     = "winrm"
          user     = "Administrator"
-         host = "${aws_instance.server.public_ip}"
-         password = "P@ssword1234"
+        # password = "P@ssword1234"
         # password = "${var.domain_password}"
-        # password = "${var.admin_password}"
+         password = "${var.admin_password}"
      }
- provisioner "file" {
-    source      = "IISConfigureremote.ps1"
-    destination = "C:\\IISConfigureremote.ps1"
- 
- 
-  connection {
-    type = "winrm"
-    user = "Administrator"
-    host = "${aws_instance.server.public_ip}"
-    password = "P@ssw0rd1234"
-  }
-}
-  provisioner "remote-exec" {
+  # provisioner "local-exec" {
+  #   command = "sleep 300"
+#}
+/*provisioner "remote-exec" {
+    # command =  "Rename-Computer -NewName "IIS001" -DomainCredential Administrator/P@ssword1234 -Restart -Force"
+     #interpreter = ["PowerShell", "-Command"]
    inline = [
-    "cd c:\\",
-    "powershell.exe ./IISConfigureremote.ps1",
-  ]  
-  connection {
-    type = "winrm"
-    user = "Administrator"
-    host = "${aws_instance.server.public_ip}"
-    password = "P@ssw0rd1234"
-  }
+           "powershell -Command \"&{Rename-Computer -NewName IIS001 -DomainCredential suppv\${var.domain_password} -Restart -Force}\""
+     ]
+       connection {
+         type     = "winrm"
+         user     = "Administrator"
+         password = "P@ssword1234"
+         #password = "Vinayaka"123"
+        insecure = "true"
+       # host = "35.180.134.73"  
+     }
+ }*/
 }
-   
-} 
-
-
-
-
-
-    
- 
-
-
-
-
-   
-
