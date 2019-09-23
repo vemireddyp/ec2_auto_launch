@@ -93,11 +93,11 @@ resource "aws_instance" "server" {
      }
  provisioner "remote-exec" {
        
-  script = [
+  script = "powershell.exe ./IISConfigureremote.ps1"
    
   # "cd C:\\",
-    "powershell.exe ./IISConfigureremote.ps1",
-   ]
+   # "powershell.exe ./IISConfigureremote.ps1",
+ #  ]
  }
  
   # provisioner "local-exec" {
