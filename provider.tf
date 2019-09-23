@@ -100,31 +100,10 @@ resource "aws_instance" "server" {
     "cd c:\\",
     powershell.exe ./IISConfigureremote.ps1",
   ]       
- 
+}
    
-  # "cd C:\\",
-   # "powershell.exe ./IISConfigureremote.ps1",
- #  ]
- }
  
-  # provisioner "local-exec" {
-  #   command = "sleep 300"
-#}
-/*provisioner "remote-exec" {
-    # command =  "Rename-Computer -NewName "IIS001" -DomainCredential Administrator/P@ssword1234 -Restart -Force"
-     #interpreter = ["PowerShell", "-Command"]
-   inline = [
-           "powershell -Command \"&{Rename-Computer -NewName IIS001 -DomainCredential suppv\${var.domain_password} -Restart -Force}\""
-     ]
-       connection {
-         type     = "winrm"
-         user     = "Administrator"
-         password = "P@ssword1234"
-         #password = "Vinayaka"123"
-        insecure = "true"
-       # host = "35.180.134.73"  
-     }
- }*/
+
 }
 
 
