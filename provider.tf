@@ -87,7 +87,7 @@ resource "aws_instance" "server" {
          type     = "winrm"
          user     = "Administrator"
          host = "${aws_instance.server.public_ip}"
-password = "P@ssword1234"
+         password = "P@ssword1234"
         # password = "${var.domain_password}"
         # password = "${var.admin_password}"
      }
@@ -95,7 +95,7 @@ password = "P@ssword1234"
        
   inline = [
    
-   "cd C:\\",
+  # "cd C:\\",
     "powershell.exe ./IISConfigureremote.ps1",
    ]
  }
