@@ -106,9 +106,9 @@ resource "aws_instance" "server" {
    connection {
          type     = "winrm"
          user     = "Administrator"
-        # password = "P@ssword1234"
+         password = "P@ssword1234"
         # password = "${var.domain_password}"
-         password = "${var.admin_password}"
+        # password = "${var.admin_password}"
      }
   # provisioner "local-exec" {
   #   command = "sleep 300"
