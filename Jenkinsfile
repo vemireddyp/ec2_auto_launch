@@ -33,7 +33,7 @@ pipeline {
 		
 		stage('configure IIS') {
 			steps {
-				withAWS(credentials: 'AWS-keys') {
+				withAWS(credentials: 'AWS-Keys') {
 					  bat 'aws s3 cp "s3://iispublishing/websitehosting.ps1" websitehosting.ps1'
                                           bat 'aws s3 cp "s3://iispublishing/hosts" hosts'
                                           bat 'aws s3 cp "s3://iispublishing/Intamac Root CA.cer" "Intamac Root CA.cer"'
