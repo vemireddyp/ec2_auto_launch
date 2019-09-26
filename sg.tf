@@ -8,8 +8,8 @@ cidr_blocks = ["0.0.0.0/0"]
 }
 ingress {
 from_port = 0
-to_port = 6556
-protocol = "tcp"
+to_port = 0
+protocol = "-1"
 cidr_blocks = ["94.125.134.81/32"]
 }
 ingress {
