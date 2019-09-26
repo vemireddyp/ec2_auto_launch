@@ -30,12 +30,7 @@ to_port = 3389
 protocol = "tcp"
 cidr_blocks = ["94.125.134.81/32"]
 }  
-ingress {
-from_port = 0
-to_port = 0
-protocol = "-1"
-cidr_blocks = ["35.180.88.59/23"]
-}   
+
 vpc_id = "vpc-62026006" 
 tags = {
 Name = "rdp"
