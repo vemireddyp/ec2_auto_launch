@@ -38,7 +38,7 @@ pipeline {
                                           bat 'aws s3 cp "s3://iispublishing/hosts" hosts'
                                           bat 'aws s3 cp "s3://iispublishing/Intamac Root CA.cer" "Intamac Root CA.cer"'
                                           bat 'aws s3 cp "s3://iispublishing/SprueIDS1.pfx" SprueIDS1.pfx'
-                                          bat 'powershell.exe ./copyfilestoiis.ps1'
+                                          bat 'powershell.exe ./filecopy.ps1'
 	}
     }
 }
