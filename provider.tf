@@ -39,7 +39,7 @@ resource "aws_instance" "server" {
     key_name = "${var.KEY_PAIR}"
     subnet_id = "subnet-60ed6d38"
     associate_public_ip_address  = "true"
-    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}"]
+    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "STG-VPN Client Server"]
     #id = "${data.aws_vpc.selected.id}"
     get_password_data    = "true"
     user_data = <<EOF
