@@ -1,5 +1,5 @@
 resource "aws_security_group" "SG-IIS" {
-name="SG-IIS-test"
+name="SG-IIS-TEST-STG"
 egress {
 from_port = 0
 to_port = 0
@@ -12,12 +12,7 @@ to_port = 0
 protocol = "-1"
 cidr_blocks = ["94.125.134.81/32"]
 }
-ingress {
-from_port = 0
-to_port = 0
-protocol = "-1"
-cidr_blocks = ["35.180.88.59/23"]
-}  
+  
 ingress {
 from_port = 0
 to_port = 6556
@@ -39,7 +34,7 @@ cidr_blocks = ["94.125.134.81/32"]
 
 vpc_id = "vpc-62026006" 
 tags = {
-Name = "rdp"
+Name = "SG-IIS-TEST-STG"
 }
 }
 
