@@ -39,7 +39,7 @@ resource "aws_instance" "server" {
     key_name = "${var.KEY_PAIR}"
     subnet_id = "subnet-60ed6d38"
     associate_public_ip_address  = "true"
-    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "sg-fb2ce09d"]
+    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "sg-fb2ce09d", "sg-fb2ce09d", "sg-d903cfbf", "sg-f821ed9e"]
     #id = "${data.aws_vpc.selected.id}"
     get_password_data    = "true"
     user_data = <<EOF
@@ -64,7 +64,7 @@ resource "aws_instance" "server" {
     $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
     $username = "suppv"
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
-    $hostname = "IIS001"
+    $hostname = "IIS-STG-TEST-SERVER"
     Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
    
     Start-Sleep -s 300
@@ -78,7 +78,7 @@ resource "aws_instance" "server" {
       }
     
     tags = {
-        Name = "test-iis-server"
+        Name = "IIS-STG-TEST-SERVER"
       }
    connection {
          type     = "winrm"
