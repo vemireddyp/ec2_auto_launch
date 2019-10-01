@@ -30,7 +30,7 @@ pipeline {
           } 
         }
 	}
-	stage('configure iis') {
+	/*stage('configure iis') {
 	     steps {
 	          withAWS(credentials: 'AWS-Keys') {
 	          bat 'aws s3 cp terraform.tfstate s3://iispublishing/terraform.tfstate'		  
@@ -42,7 +42,7 @@ pipeline {
 	          }
 	          bat 'powershell.exe ./filecopy.ps1 %IISPASSWORD%'
 	     }
-	     }
+	     }*/
 	 }    
 		
 		
