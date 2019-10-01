@@ -57,6 +57,9 @@ resource "aws_instance" "server" {
     net start winrm
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     Install-WindowsFeature -name Web-ASP-Net
+    Enable-WindowsOptionalFeature -Online -FeatureName IIS-ApplicationDevelopment
+    Install-WindowsFeature -Name NET-Framework-45-Features
+    Install-WindowsFeature -Name NET-Framework-45-Core
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
     $dnsCGSetting = Get-DnsClientGlobalSetting
