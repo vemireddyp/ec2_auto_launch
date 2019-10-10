@@ -39,7 +39,7 @@ resource "aws_instance" "server" {
     key_name = "${var.KEY_PAIR}"
     subnet_id = "subnet-60ed6d38"
     associate_public_ip_address  = "true"
-    security_groups = ["${aws_security_group.jenk-sg.id}"]
+  #  security_groups = ["${aws_security_group.jenk-sg.id}"]
     vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "sg-fb2ce09d", "sg-fb2ce09d", "sg-d903cfbf", "sg-f821ed9e"]
     #id = "${data.aws_vpc.selected.id}"
     get_password_data    = "true"
