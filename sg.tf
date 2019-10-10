@@ -38,3 +38,13 @@ Name = "SG-IIS-TEST-STG"
 }
 }
 
+resource "aws_security_group" "jenk-sg" {
+   name = "jenk-win-sg"
+   ingress {
+      from_port = 0
+      to_port = 0
+     protocol = "-1"
+     cidr_blocks = ["35.180.88.59/23"]
+     }
+  }
+
