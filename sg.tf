@@ -44,7 +44,7 @@ resource "aws_security_group" "jenk-sg" {
       from_port = 0
       to_port = 0
      protocol = "-1"
-     cidr_blocks = ["35.180.88.59/23"]
+     cidr_blocks = ["35.180.88.0/23"]
      }
   }
 
