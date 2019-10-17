@@ -38,14 +38,14 @@ Name = "SG-IIS-TEST-STG"
 }
 }
 
-resource "aws_security_group_rule" "jenk-sg" {
+/*resource "aws_security_group_rule" "jenk-sg" {
    type = "ingress"
      from_port = 0
       to_port = 0
      protocol = "-1"
      cidr_blocks = ["35.180.88.59/32"]
      security_group_id = "${aws_security_group.SG-IIS.id}"
-  }
+  }*/
 
   
 
