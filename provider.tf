@@ -66,7 +66,7 @@ resource "aws_instance" "server" {
     $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
     $username = "suppv"
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
-    $hostname = "IIS-STG-TEST-SERVER"
+    $hostname = "IIS-STG-TEST"
     Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
    
     Start-Sleep -s 300
@@ -80,7 +80,7 @@ resource "aws_instance" "server" {
       }
     
     tags = {
-        Name = "IIS-STG-TEST-SERVER"
+        Name = "IIS-STG-TEST"
       }
    connection {
          type     = "winrm"
