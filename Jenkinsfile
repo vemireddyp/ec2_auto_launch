@@ -21,16 +21,16 @@ pipeline {
         stage('initialize') {
           steps {
             //sh "terraform init"
-               withAWS(credentials: 'AWS-staging') {
+               withAWS(credentials: 'AWS-PRODUCTION-KEYS') {
            // sh "terraform init"
                  bat "terraform init"
                  bat "terraform plan"
-                 bat "terraform apply -auto-approve"
-		 sleep(300)      
+            //     bat "terraform apply -auto-approve"
+	//	 sleep(300)      
           } 
         }
 	}
-	stage('configure IIS') {
+	/*stage('configure IIS') {
 	     steps {
 	          withAWS(credentials: 'AWS-Keys') {
 	          bat 'aws s3 cp terraform.tfstate s3://iispublishing/terraform.tfstate'		  
@@ -44,7 +44,7 @@ pipeline {
 	        //  bat 'powershell.exe ./filecopy.ps1 %IISPASSWORD%'
 	     }
 	     }
-	 }    
+	 }   */ 
 		
 		
 
