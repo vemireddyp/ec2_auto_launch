@@ -80,7 +80,7 @@ resource "aws_instance" "server" {
       }
     
     tags = {
-        Name = "IIS-STG-TEST"
+        Name = "IIS-PROD-TEST"
       }
    connection {
          type     = "winrm"
