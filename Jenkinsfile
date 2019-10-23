@@ -1,16 +1,16 @@
 pipeline {
     agent any 
     stages {
-      stage('checkout') {
+     /* stage('checkout') {
           //  agent { docker 'maven:3-alpine' } 
             steps {
                 checkout scm
                // sh 'mvn --version'
             }
-        }
+        }*/
 	
     
-        stage('initialize') {
+       /* stage('initialize') {
           steps {
             
                withAWS(credentials: 'AWS-PRODUCTION-KEYS') {
@@ -21,8 +21,12 @@ pipeline {
 	   
           } 
         }
-	}
-	
+	}*/
+	    stage('checkout source code') {
+		    steps {
+			bat 'git submodule add -f -b https://github.com/FireAngel-Connect-Software/Build.git'    
+		    }
+	    }
 		
 		
     }
