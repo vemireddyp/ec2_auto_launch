@@ -29,13 +29,13 @@ variable "volume_size" {
 
 variable "aws_profile" {
   description = "Set the aws cli profile to use"
-  default = "644383991727"
+  default = "228411049317"
 }
 
 
 variable "region" {
   description = "AWS region"
-  default     = "eu-west-1"
+  default     = "eu-central-1"
 }
 
 
