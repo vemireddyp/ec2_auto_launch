@@ -37,10 +37,10 @@ resource "aws_instance" "server" {
     instance_type = "t2.medium"
   #  private_ip = "10.25.16.6"
     key_name = "${var.KEY_PAIR}"
-    subnet_id = "subnet-60ed6d38"
+    subnet_id = "subnet-878cccec"
     associate_public_ip_address  = "true"
   #  security_groups = ["${aws_security_group.jenk-sg.id}"]
-    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "sg-fb2ce09d", "sg-fb2ce09d", "sg-d903cfbf", "sg-f821ed9e"]
+    vpc_security_group_ids = ["${aws_security_group.SG-IIS.id}", "sg-2467d749", "sg-9e6dddf3", "sg-fe10a093"]
     #id = "${data.aws_vpc.selected.id}"
     get_password_data    = "true"
     user_data = <<EOF
@@ -60,16 +60,16 @@ resource "aws_instance" "server" {
     
     Set-DnsClientServerAddress -InterfaceAlias 'Ethernet' -ServerAddresses '10.25.20.4','10.25.22.4'
     net user Administrator "P@ssw0rd1234"
-    $dnsCGSetting = Get-DnsClientGlobalSetting
-    $dnsCGSetting.SuffixSearchList += "aws.sprue.com"
-    Set-DnsClientGlobalSetting -SuffixSearchList $dnsCGSetting.SuffixSearchList
-    $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
-    $username = "suppv"
-    $credential = New-Object System.Management.Automation.PSCredential($username,$password)
-    $hostname = "IIS-STG-TEST"
-    Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
+ #   $dnsCGSetting = Get-DnsClientGlobalSetting
+ #   $dnsCGSetting.SuffixSearchList += "aws.sprue.com"
+ #   Set-DnsClientGlobalSetting -SuffixSearchList $dnsCGSetting.SuffixSearchList
+#    $password = "Domainaccount123" | ConvertTo-SecureString -asPlainText -Force
+#    $username = "suppv"
+#    $credential = New-Object System.Management.Automation.PSCredential($username,$password)
+ #   $hostname = "IIS-STG-TEST"
+ #   Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
    
-    Start-Sleep -s 300
+ #   Start-Sleep -s 300
     
     </powershell>
     EOF
