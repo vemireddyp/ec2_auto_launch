@@ -32,7 +32,7 @@ protocol = "tcp"
 cidr_blocks = ["94.125.134.81/32"]
 }  
 
-vpc_id = "vpc-62026006" 
+vpc_id = "vpc-8ddd5ce6" 
 tags = {
 Name = "SG-IIS-TEST-STG"
 }
