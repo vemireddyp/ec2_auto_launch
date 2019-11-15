@@ -25,7 +25,7 @@ protocol = "-1"
 cidr_blocks = ["10.25.16.0/23"]  
 }  
 vpc_id = "vpc-05a81be78057299ff" 
-tags {
+tags = {
 Name = "rdp"
 }
 }
