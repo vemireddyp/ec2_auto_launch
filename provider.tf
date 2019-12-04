@@ -69,10 +69,6 @@ resource "aws_instance" "server" {
     $credential = New-Object System.Management.Automation.PSCredential($username,$password)
     $hostname = "IIS-TEST"
     Add-Computer -domainname aws.sprue.com -OUPath "OU=IIS,OU=DMZ,OU=Computers,OU=sprue,DC=aws,DC=sprue,DC=com" -NewName $hostname -DomainCredential $credential -Passthru -Verbose -Force -Restart
-   ## $domainpassword = ConvertTo-SecureString "Vinayaka"123" -AsPlainText -Force 
-#$secpasswd = ConvertTo-SecureString "PlainTextPassword" -AsPlainText -Force
-   # $mycreds = New-Object System.Management.Automation.PSCredential ("suppv", $domainpassword)
-    #Rename-Computer -NewName "IIS001" -DomainCredential $mycreds -Restart -Force
     Start-Sleep -s 300
     #Add-Computer -DomainName $domain -OUPath \"$ouPath\" -Credential $credential\n
    # Add-Computer -DomainName "aws.sprue.com" -OUPath "OU=sprue,DC=aws,DC=sprue,DC=com" -DomainCredential $mycreds -Restart –Force
