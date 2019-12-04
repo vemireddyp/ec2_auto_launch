@@ -8,21 +8,28 @@ cidr_blocks = ["0.0.0.0/0"]
 }
 ingress {
 from_port = 0
-to_port = 6556
-protocol = "tcp"
+to_port = 0
+protocol = "-1"
 cidr_blocks = ["94.125.134.81/32"]
 }
+  
 ingress {
 from_port = 0
-to_port = 0
-protocol = "-1"
-cidr_blocks = ["10.25.20.0/23"]  
-}
+to_port = 6556
+protocol = "tcp"
+cidr_blocks = ["10.25.20.0/32"]
+}  
 ingress {
 from_port = 0
-to_port = 0
-protocol = "-1"
-cidr_blocks = ["10.25.16.0/23"]  
+to_port = 6556
+protocol = "tcp"
+cidr_blocks = ["10.25.16.0/23"]
+}  
+ingress {
+from_port = 3389
+to_port = 3389
+protocol = "tcp"
+cidr_blocks = ["94.125.134.81/32"]
 }  
 vpc_id = "vpc-05a81be78057299ff" 
 tags = {
