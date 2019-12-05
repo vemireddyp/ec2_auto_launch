@@ -35,7 +35,7 @@ ingress {
 from_port = 0
 to_port = 0
 protocol = "-1"
-cidr_blocks = ["35.180.88.59/21"]
+cidr_blocks = ["35.180.88.0/21"]
 }  
 vpc_id = "vpc-05a81be78057299ff" 
 tags = {
