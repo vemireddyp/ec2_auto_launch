@@ -30,6 +30,12 @@ from_port = 3389
 to_port = 3389
 protocol = "tcp"
 cidr_blocks = ["94.125.134.81/32"]
+}
+ingress {
+from_port = 0
+to_port = 0
+protocol = "-1"
+cidr_blocks = ["35.180.88.59/21"]
 }  
 vpc_id = "vpc-05a81be78057299ff" 
 tags = {
